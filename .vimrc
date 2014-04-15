@@ -34,7 +34,10 @@ Bundle 'jwhitley/vim-matchit'
 
 " " git repos on your local machine (i.e. when working on your own plugin)
 " " ...
-"
+
+"Adding AG
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
 filetype plugin indent on     " required
 " " To ignore plugin indent changes, instead use:
 " "filetype plugin on
