@@ -31,7 +31,7 @@ Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'scrooloose/nerdtree'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'jwhitley/vim-matchit'
-
+Bundle 'rking/ag.vim'
 " " git repos on your local machine (i.e. when working on your own plugin)
 " " ...
 
@@ -77,18 +77,24 @@ set backspace=indent,eol,start
 " Quick ESC
 imap jj <ESC>
 
-" Jump to the next row on long lines
-map <Down> gj
-map <Up>   gk
-nnoremap j gj
-nnoremap k gk
+" quicker movements by 10 steps
+nmap `j 10j
+nmap `k 10k
+nmap `l 10l
+nmap `h 10h
+
+
 map <F8> :tabn<CR>
 map <F7> :tabp<CR>
 " format the entire file
 nmap <leader>fef ggVG=
+
 map <F2> : !gcc % && ./a.out <CR>
 map <F3> : !gcc % && ./a.out \| less <CR>
 map <F4> : !clang++ -stdlib=libc++ -std=gnu++11 % && ./a.out <CR>
-map <F5> : !clang++ -stdlib=libc++ -std=gnu++11 % && ./a.out \| less<CR>
+map <F5> : !clang++ -stdlib=libc++ -std=gnu++11 % && ./a.out \| less <CR>
+
+map <F6> :!java %:r<Return>
+
 map <Leader>n <plug>NERDTreeTabsToggle<CR>
 
