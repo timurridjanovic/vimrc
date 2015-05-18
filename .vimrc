@@ -34,9 +34,11 @@ Bundle 'jwhitley/vim-matchit'
 Bundle 'rking/ag.vim'
 " " git repos on your local machine (i.e. when working on your own plugin)
 " " ...
-
+"GO syntax highlighting
+Plugin 'fatih/vim-go'
 "Adding AG
 let g:ackprg = 'ag --nogroup --nocolor --column'
+
 
 filetype plugin indent on     " required
 " " To ignore plugin indent changes, instead use:
@@ -94,7 +96,7 @@ map <F3> : !gcc % && ./a.out \| less <CR>
 map <F4> : !clang++ -stdlib=libc++ -std=gnu++11 % && ./a.out <CR>
 map <F5> : !clang++ -stdlib=libc++ -std=gnu++11 % && ./a.out \| less <CR>
 
-map <F6> :!java %:r<Return>
+map <F6> : !javac % && !java %:r<Return>
 
 map <Leader>n <plug>NERDTreeTabsToggle<CR>
 
