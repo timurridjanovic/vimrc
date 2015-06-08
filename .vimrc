@@ -3,35 +3,34 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 syntax on
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-" " alternatively, pass a path where Vundle should install bundles
-" "let path = '~/some/path/here'
-" "call vundle#rc(path)
-"
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+" call vundle#begin('~/some/path/here') 
+
 " " let Vundle manage Vundle, required
-Bundle 'Valloric/MatchTagAlways'
-Bundle 'gmarik/vundle'
+Plugin 'Valloric/MatchTagAlways'
+Plugin 'gmarik/vundle'
 "
 " " The following are examples of different formats supported.
 " " Keep bundle commands between here and filetype plugin indent on.
 " " scripts on GitHub repos
-Bundle 'tpope/vim-fugitive'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'tpope/vim-rails.git'
-Bundle 'kana/vim-fakeclip'
+Plugin 'tpope/vim-fugitive'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'tpope/vim-rails.git'
+Plugin 'kana/vim-fakeclip'
 " " The sparkup vim script is in a subdirectory of this repo called vim.
 " " Pass the path to set the runtimepath properly.
-Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " " scripts from http://vim-scripts.org/vim/scripts.html
-Bundle 'L9'
-Bundle 'FuzzyFinder'
+Plugin 'L9'
+Plugin 'FuzzyFinder'
 " " scripts not on GitHub
-Bundle 'git://git.wincent.com/command-t.git'
-Bundle 'scrooloose/nerdtree'
-Bundle 'jistr/vim-nerdtree-tabs'
-Bundle 'jwhitley/vim-matchit'
-Bundle 'rking/ag.vim'
+Plugin 'git://git.wincent.com/command-t.git'
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'jwhitley/vim-matchit'
+Plugin 'rking/ag.vim'
 " " git repos on your local machine (i.e. when working on your own plugin)
 " " ...
 "GO syntax highlighting
@@ -39,7 +38,7 @@ Plugin 'fatih/vim-go'
 "Adding AG
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
-
+call vundle#end()             " required
 filetype plugin indent on     " required
 " " To ignore plugin indent changes, instead use:
 " "filetype plugin on
@@ -53,6 +52,7 @@ filetype plugin indent on     " required
 " " see :h vundle for more details or wiki for FAQ
 " " NOTE: comments after Bundle commands are not allowed.
 " " Put your stuff after this line
+
 
 
 colorscheme jellybeans
