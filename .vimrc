@@ -54,6 +54,14 @@ filetype plugin indent on     " required
 " " Put your stuff after this line
 
 
+" PATHOGEN START
+execute pathogen#infect()
+syntax on
+filetype plugin indent on
+" PATHOGEN END
+
+
+
 
 colorscheme jellybeans
 set hlsearch
@@ -99,4 +107,4 @@ map <F5> : !clang++ -stdlib=libc++ -std=gnu++11 % && ./a.out \| less <CR>
 map <F6> : !javac % && !java %:r<Return>
 
 map <Leader>n <plug>NERDTreeTabsToggle<CR>
-
+let NERDTreeShowHidden=1
