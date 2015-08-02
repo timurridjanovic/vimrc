@@ -35,6 +35,10 @@ Plugin 'rking/ag.vim'
 " " ...
 "GO syntax highlighting
 Plugin 'fatih/vim-go'
+
+"Plugin for html5
+Plugin 'othree/html5.vim'
+
 "Adding AG
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
@@ -108,3 +112,36 @@ map <F6> : !javac % && !java %:r<Return>
 
 map <Leader>n <plug>NERDTreeTabsToggle<CR>
 let NERDTreeShowHidden=1
+
+
+"set or unset clipboard on deletes with ctrl a
+let g:clipboard_set = 0
+function! ToggleClipboardOnDeletes()
+    if g:clipboard_set
+        unmap p
+        unmap d
+        unmap D
+        echom "clipboard on delete set"
+        let g:clipboard_set = 0
+    else
+        xnoremap p "_dP
+        nnoremap d "_d
+        vnoremap d "_d
+        nnoremap D "_D
+        vnoremap D "_D
+        echom "clipboard on delete unset"
+        let g:clipboard_set = 1
+    endif
+endfunction
+
+map <c-a> :call ToggleClipboardOnDeletes()<cr>
+
+
+"jsBeautify with ctrl z
+map <c-z> :call JsBeautify()<cr>
+" or
+autocmd FileType javascript noremap <buffer>  <c-z> :call JsBeautify()<cr>
+" for html
+autocmd FileType html noremap <buffer> <c-z> :call HtmlBeautify()<cr>
+" for css or scss
+autocmd FileType css noremap <buffer> <c-z> :call CSSBeautify()<cr>
