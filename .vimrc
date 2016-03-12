@@ -15,8 +15,6 @@ Plugin 'gmarik/vundle'
 " " The following are examples of different formats supported.
 " " Keep bundle commands between here and filetype plugin indent on.
 " " scripts on GitHub repos
-Plugin 'tpope/vim-fugitive'
-Plugin 'Lokaltog/vim-easymotion'
 Plugin 'tpope/vim-rails.git'
 Plugin 'kana/vim-fakeclip'
 " " The sparkup vim script is in a subdirectory of this repo called vim.
@@ -24,9 +22,7 @@ Plugin 'kana/vim-fakeclip'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " " scripts from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
-Plugin 'FuzzyFinder'
 " " scripts not on GitHub
-Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'jwhitley/vim-matchit'
@@ -76,6 +72,7 @@ set shiftwidth=4
 set encoding=utf-8
 set tabstop=4
 set wrap
+set relativenumber 
 set number
 set nowritebackup
 set noswapfile
@@ -87,22 +84,21 @@ set linebreak
 setlocal linebreak
 set clipboard=unnamed
 set backspace=indent,eol,start
+set laststatus=2
 
 " Quick ESC
 imap jj <ESC>
 
-" quicker movements by 10 steps
-nmap `j 10j
-nmap `k 10k
-nmap `l 10l
-nmap `h 10h
-
-
+" changing tabs
 map <F8> :tabn<CR>
 map <F7> :tabp<CR>
-" format the entire file
-nmap <leader>fef ggVG=
 
+" changing buffers
+nmap <BS> :bnext<CR>
+nmap = :bprev<CR>
+
+
+"compiling
 map <F2> : !gcc % && ./a.out <CR>
 map <F3> : !gcc % && ./a.out \| less <CR>
 map <F4> : !clang++ -stdlib=libc++ -std=gnu++11 % && ./a.out <CR>
@@ -110,6 +106,8 @@ map <F5> : !clang++ -stdlib=libc++ -std=gnu++11 % && ./a.out \| less <CR>
 
 map <F6> : !javac % && !java %:r<Return>
 
+
+"nerd tree
 map <Leader>n <plug>NERDTreeTabsToggle<CR>
 let NERDTreeShowHidden=1
 
@@ -145,3 +143,43 @@ autocmd FileType javascript noremap <buffer>  <c-z> :call JsBeautify()<cr>
 autocmd FileType html noremap <buffer> <c-z> :call HtmlBeautify()<cr>
 " for css or scss
 autocmd FileType css noremap <buffer> <c-z> :call CSSBeautify()<cr>
+
+"ctrlp settings
+set wildignore+=*.a,*.o,*.class
+set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png
+set wildignore+=.DS_STORE,.git,.hg,.svn
+set wildignore+=*/node_modules/*
+set wildignore+=*/target/*,*/build/*,*/coverage/*
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+let g:ctrlp_max_files=0
+let g:ctrlp_follow_symlinks=1
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_max_depth=40
+
+" airline settings
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+
+"diable arow keys
+inoremap <Up> <NOP>
+inoremap <Down> <NOP>
+inoremap <Left> <NOP>
+inoremap <Right> <NOP>
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+
+"map window change
+map <C-J> <C-W>j<C-W>_
+map <C-K> <C-W>k<C-W>_
+map <C-H> <C-W>h<C-W>_
+map <C-L> <C-W>l<C-W>_
+
+"easy motion
+nmap s <Plug>(easymotion-overwin-f)
+
+nmap L <Plug>(easymotion-lineforward)
+nmap J <Plug>(easymotion-j)
+nmap K <Plug>(easymotion-k)
+nmap H <Plug>(easymotion-linebackward)
