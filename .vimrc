@@ -1,4 +1,3 @@
-
 set nocompatible              " be iMproved, required
 filetype off                  " required
 syntax on
@@ -199,8 +198,8 @@ endfunction
 
 nnoremap <silent> <Leader>e :<c-u>call ToggleErrors()<CR>
 nnoremap <silent> <Leader>t :SyntasticToggleMode<CR>
-nnoremap <silent> <c-]> :lnext<CR>
-nnoremap <silent> <c-[> :lprevious<CR>zz
+nnoremap <silent> <c-\> :lnext<CR>
+nnoremap <silent> <c-]> :lprevious<CR>
 
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['javascript'], 'passive_filetypes': ['html'] }
 let g:syntastic_javascript_checkers = ['eslint']
