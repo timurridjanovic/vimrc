@@ -183,3 +183,29 @@ nmap L <Plug>(easymotion-lineforward)
 nmap J <Plug>(easymotion-j)
 nmap K <Plug>(easymotion-k)
 nmap H <Plug>(easymotion-linebackward)
+
+"set undo
+set undofile
+set undodir=~/.vim/undo
+
+"syntastic
+function! ToggleErrors()
+    let old_last_winnr = winnr('$')
+    lclose
+    if old_last_winnr == winnr('$')
+        Errors
+    endif
+endfunction
+
+nnoremap <silent> <Leader>e :<c-u>call ToggleErrors()<CR>
+nnoremap <silent> <Leader>t :SyntasticToggleMode<CR>
+nnoremap <silent> <c-]> :lnext<CR>
+nnoremap <silent> <c-[> :lprevious<CR>zz
+
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['javascript'], 'passive_filetypes': ['html'] }
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exec = 'eslint_d'
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_loc_list_height=5
